@@ -1,0 +1,31 @@
+html(lang='es')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    script(src='/bootstrap/js/bootstrap.bundle.min.js')
+
+    title Mi primera Página
+
+  body 
+    div.container.d-flex.justify-content-center.flex-nowrap
+        form(action='/login', method='post') 
+            div.card.mx_auto.w-100
+            
+                div.card-header
+                    h3 Mi Tienda Genérica
+            
+                div.card-body
+                
+                    div
+                        label(for='username') Usuario
+                    div
+                        input#username(type='text',name='username')
+                    div
+                        label(for='password') Password
+                    div
+                        input#password(type='password',name='password')
+                div.card-footer
+                    input#submit.button(type='submit',value='Login')
