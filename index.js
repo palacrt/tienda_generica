@@ -2,10 +2,18 @@ const express = require('express');
 const port = 3050;
 const app = express();
 
+const cors = require('cors');
+
+
 // Mapear rutas de librerias
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use('/fontawesome-free', express.static(__dirname + '/node_modules/@fortawesome/fontawesome-free'));
 app.use('/knockout', express.static(__dirname + '/node_modules/knockout/build/output'));
+
+// autorizar servidores de microservicios
+app.use(cors({
+  origin: 'https://localhost:3000'
+}));
 
 // Mapear recursos estáticos
 app.use('/static', express.static(__dirname + '/public'));
@@ -18,7 +26,6 @@ app.set('views', './views');
 
 // Se indica el motor del plantillas a utilizar
 app.set('view engine', 'pug');
-
 
 // Configuración de las peticiones
 app.get('/', (req, res) => {

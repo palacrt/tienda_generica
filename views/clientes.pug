@@ -1,66 +1,25 @@
 extends layout.pug
 
 block main
-    main.container
+    main#principal.container
         div.row
-            div.col-sm-8#reporte(style="background-color:#FFC; overflow:scroll;")
+            div.col-sm-6#reporte(style="background-color:#FFC; overflow:scroll;")
                 button.btn.btn-primary#btn_crear Crear
                 table.table.table-bordered.table-hover
                     thead
                         tr
                             th &nbsp;
                             th Cedula
-                            th Direccion
-                            th E-mail
                             th Nombre
-                            th Telefono
-                            th Municipio
-                    tbody
+                            th E-mail
+                    tbody(data-bind="foreach: clientes")
                         tr
-                            td
-                                a(href="#").btn.btn-secondary Editar
-                                a(href="#").btn.btn-danger Eliminar
-                            td 1085905269
-                            td Calle 123
-                            td juandpalacios@gmail.com
-                            td Juan David Palacios
-                            td 3130000000
-                            td Bogotá
+                            td accion
+                            td(data-bind="text: cedula")
+                            td(data-bind="text: nombre")
+                            td(data-bind="text: email")                           
 
-                        tr
-                            td
-                                a(href="#").btn.btn-secondary Editar
-                                a(href="#").btn.btn-danger Eliminar
-                            td 1085905269
-                            td Calle 123
-                            td juandpalacios@gmail.com
-                            td Juan David Palacios
-                            td 3130000000
-                            td Bogotá
-
-                        tr
-                            td
-                                a(href="#").btn.btn-secondary Editar
-                                a(href="#").btn.btn-danger Eliminar
-                            td 1085905269
-                            td Calle 123
-                            td juandpalacios@gmail.com
-                            td Juan David Palacios
-                            td 3130000000
-                            td Bogotá
-
-                        tr
-                            td
-                                a(href="#").btn.btn-secondary Editar
-                                a(href="#").btn.btn-danger Eliminar
-                            td 1085905269
-                            td Calle 123
-                            td juandpalacios@gmail.com
-                            td Juan David Palacios
-                            td 3130000000
-                            td Bogotá                           
-
-            div.col-sm-4#formulario(style="background-color:#CCC;")
+            div.col-sm-6#formulario(style="background-color:#CCC;")
                 form(action="\cliente")
                 div.form-group
                     label(for="cedula") Cédula
@@ -81,4 +40,5 @@ block main
                     label(for="ciudad") Ciudad
                     input.form-control#ciudad(type="text",name="ciudad")    
                 button.btn.btn-primary#crear(type="submit") Crear                                                        
-                button.btn.btn-light#crear(type="submit") Cancelar
+                button.btn.btn-light#crear(type="submit") Cancelar 
+    script(src="/static/js/clientes.js")

@@ -3,24 +3,9 @@ var MenuViewModel = function (links) {
 };
 
 ko.applyBindings(new MenuViewModel([
-  {
-    descripcion: 'Usuarios',
-    url: '/usuarios'
-  },
-  {
-    descripcion: 'Clientes',
-    url: '/clientes'
-  },
-  {
-    descripcion: 'Productos',
-    url: '/usuarios'
-  },        
-  {
-    descripcion: 'Ventas',
-    url: '/ventas'
-  },
-  {
-    descripcion: 'Reportes',
-    url: '/reportes'        
-  }
-]));
+  {descripcion: 'Usuarios',  url: '/usuarios'},
+  {descripcion: 'Clientes',  url: '/clientes'},
+  {descripcion: 'Productos', url: '/productos'},        
+  {descripcion: 'Ventas',    url: '/ventas'},
+  {descripcion: 'Reportes',  url: '/reportes'}
+]),document.getElementById('navigation'));
