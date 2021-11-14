@@ -1,0 +1,52 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    
+    <!-- Bootstrap -->
+    link(rel="stylesheet", href="/bootstrap/css/bootstrap.min.css")
+    script(src="/bootstrap/js/bootstrap.bundle.min.js")
+
+    <!-- Estilos propios -->
+    link(rel="stylesheet", href="/static/css/estilos.css")
+
+    <!-- Fontawesome -->
+    link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.1.0/css/all.css")
+    link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.1.0/css/v4-shims.css")
+    link(rel="stylesheet", href="/fontawesome-free/css/fontawesome.css")
+
+    <!-- Knockout -->
+    script(src="/knockout/knockout-latest.js")
+    <!-- Evento para vincular propiedad modalVisible con Bootstrap Modal -->
+    script(src="/static/js/modal.js")
+
+    <!-- Bootswatch -->
+    link(rel="stylesheet", href="/bootswatch/materia/bootstrap.min.css")
+
+    title Vielfalt Pet Store - #{titulo}
+
+  body.padre
+    header
+      nav#navigation.navbar.navbar-expand-lg.navbar.navbar-dark.bg-dark
+        div.container-fluid
+          img(src="/static/imagenes/logo-05.svg",style="height: 184px; background-color: #DBD4D1; margin-right: 18px; padding: 0px;")
+          a.navbar-brand(href="/") Veterinaria Vielfalt
+          button.navbar-toggler(type="button",data-bs-toggle="collapse",data-bs-target="#navbarSupportedContent",aria-controls="navbarSupportedContent",aria-expanded="false",aria-label="Toggle navigation")
+            span.navbar-toggler-icon
+          div#navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.me-auto.mb-2.mb-lg-0(data-bind="foreach: menu")
+              li.nav-item 
+                a.nav-link(aria-current="page",data-bind="attr: {href: url, title: descripcion}, text: descripcion")
+      
+
+
+
+    block main 
+      <p>No hay contenido</p>
+
+    footer.redes
+      p &copy; - 2021
+
+script(src="/static/js/navigation.js")

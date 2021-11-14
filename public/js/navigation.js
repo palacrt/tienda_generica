@@ -1,6 +1,8 @@
-var MenuViewModel = function (links) { 
+class MenuViewModel {
+  constructor(links) {
     this.menu = ko.observableArray(links);
-};
+  }
+}
 
 ko.applyBindings(new MenuViewModel([
   {descripcion: 'Usuarios',  url: '/usuarios'},

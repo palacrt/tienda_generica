@@ -1,44 +1,63 @@
 extends layout.pug
 
 block main
-    main#principal.container
-        div.row
-            div.col-sm-6#reporte(style="background-color:#FFC; overflow:scroll;")
-                button.btn.btn-primary#btn_crear Crear
-                table.table.table-bordered.table-hover
-                    thead
-                        tr
-                            th &nbsp;
-                            th Cedula
-                            th Nombre
-                            th E-mail
-                    tbody(data-bind="foreach: clientes")
-                        tr
-                            td accion
-                            td(data-bind="text: cedula")
-                            td(data-bind="text: nombre")
-                            td(data-bind="text: email")                           
+  main#principal.container(style="background-color:rgba(255,255,255,.75);")
+    div#reporte(style="margin-top: 24px; margin-bottom: 24px;padding-top: 12px; padding-bottom: 24px;")
+      button#nuevo.btn.btn-primary(type="button",data-bind="click: crear",style="margin-bottom:12px;") 
+        i.fas.fa-plus(title="Crear")
+      table.table.table-hover(style="background:none;")
+        thead
+          tr
+            th &nbsp;
+            th Cédula
+            th Nombre
+            th E-mail
+            th Direccion
+            th Teléfono
+            th Ciudad
+        tbody(data-bind="foreach: clientes")
+          tr
+            td.btn-group
+              button.btn.btn-primary(type="button",data-bind="click: function () {$parent.getActual($index())}")
+                i.fas.fa-edit(title="Editar")
+              button.btn.btn-danger(type="button",data-bind="click: function () { confirm('Desea Eliminar?') ? $parent.eliminar($index()): null; }")
+                i.fas.fa-trash-alt(title="Eliminar")                                
+            td(data-bind="text: cedula")
+            td(data-bind="text: nombre")
+            td(data-bind="text: email")
+            td(data-bind="text: direccion")
+            td(data-bind="text: telefono")
+            td(data-bind="text: $parent.get_descripcion_municipio(municipio_id)")
 
-            div.col-sm-6#formulario(style="background-color:#CCC;")
-                form(action="\cliente")
-                div.form-group
-                    label(for="cedula") Cédula
-                    input.form-control#cedula(type="number",name="cedula")
-                div.form-group
-                    label(for="direccion") Dirección
-                    input.form-control#direccion(type="text",name="direccion")
-                div.form-group
-                    label(for="email") E-mail
-                    input.form-control#email(type="email",name="email")
-                div.form-group
-                    label(for="nombre") Nombre
-                    input.form-control#nombre(type="text",name="nombre")
-                div.form-group
-                    label(for="telefono") Teléfono
-                    input.form-control#telefono(type="text",name="telefono")
-                div.form-group
-                    label(for="ciudad") Ciudad
-                    input.form-control#ciudad(type="text",name="ciudad")    
-                button.btn.btn-primary#crear(type="submit") Crear                                                        
-                button.btn.btn-light#crear(type="submit") Cancelar 
-    script(src="/static/js/clientes.js")
+    form(action="")
+      div#formulario.modal.fade(tabindex="-1",role="dialog",aria-hidden="true",aria-labelledby="formularioTitle",data-bind="modalVisible: isModalVisible, with: clienteCurrent")
+        div.modal-dialog.modal-dialog-centered(role="document")
+          div.modal-content
+            div.modal-header
+              h5#formularioTitle.modal-title Cliente
+            div.modal-body
+              input.form-control#id(type="hidden",name="id",data-bind="value: id")
+              div.form-group
+                label(for="cedula") Cédula
+                input.form-control#cedula(type="number",name="cedula",data-bind="value: cedula")
+              div.form-group
+                label(for="direccion") Dirección
+                input.form-control#direccion(type="text",name="direccion",data-bind="value: direccion")
+              div.form-group
+                label(for="email") E-mail
+                input.form-control#email(type="email",name="email",data-bind="value: email")
+              div.form-group
+                label(for="nombre") Nombre
+                input.form-control#nombre(type="text",name="nombre",data-bind="value: nombre")
+              div.form-group
+                label(for="telefono") Teléfono
+                input.form-control#telefono(type="text",name="telefono",data-bind="value: telefono")
+              div.form-group
+                label(for="ciudad") Ciudad
+                select.form-select.form-control#ciudad(type="text",name="ciudad",data-bind="options: $parent.lov_municipios, optionsText: 'd', optionsValue: 'r', value: municipio_id, optionsCaption: 'Seleccionar Ciudad...'")
+            div.modal-footer
+              button.btn.btn-primary#crear(type="button",data-bs-dismiss="modal",data-bind="click: $parent.guardar") Guardar                                                        
+              button.btn.btn-light#cancelar(type="button",data-bs-dismiss="modal") Cancelar
+
+  script(src="/static/js/clientes.js")
+

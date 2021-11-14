@@ -6,11 +6,8 @@ html(lang="es")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     
     <!-- Bootstrap -->
-    link(rel="stylesheet", href="/bootstrap/css/bootstrap.min.css")
+    <!-- link(rel="stylesheet", href="/bootstrap/css/bootstrap.min.css") -->
     script(src="/bootstrap/js/bootstrap.bundle.min.js")
-
-    <!-- Estilos propios -->
-    link(rel="stylesheet", href="/static/css/estilos.css")
 
     <!-- Fontawesome -->
     link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.1.0/css/all.css")
@@ -19,6 +16,17 @@ html(lang="es")
 
     <!-- Knockout -->
     script(src="/knockout/knockout-latest.js")
+    <!-- Evento para vincular propiedad modalVisible con Bootstrap Modal -->
+    script(src="/static/js/modal.js")
+
+    <!-- Bootswatch -->
+    <!--link(rel="stylesheet", href="/bootswatch/materia/bootstrap.min.css")-->
+    link(rel="stylesheet", href="/bootswatch/sketchy/bootstrap.min.css")
+
+    script(src="/nice-select2/js/nice-select2.js")
+
+    <!-- Estilos propios -->
+    link(rel="stylesheet", href="/static/css/estilos.css")  
 
     title Vielfalt Pet Store - #{titulo}
 
@@ -28,7 +36,7 @@ html(lang="es")
 
     nav#navigation.navbar.navbar-expand-lg.navbar.navbar-dark.bg-dark
       div.container-fluid
-        a.navbar-brand(href="#") Veterinaria Vielfalt
+        a.navbar-brand(href="/") Veterinaria Vielfalt
         button.navbar-toggler(type="button",data-bs-toggle="collapse",data-bs-target="#navbarSupportedContent",aria-controls="navbarSupportedContent",aria-expanded="false",aria-label="Toggle navigation")
           span.navbar-toggler-icon
         div#navbarSupportedContent.collapse.navbar-collapse
@@ -43,4 +51,3 @@ html(lang="es")
       p &copy; - 2021
 
 script(src="/static/js/navigation.js")
-    

@@ -9,6 +9,8 @@ const cors = require('cors');
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use('/fontawesome-free', express.static(__dirname + '/node_modules/@fortawesome/fontawesome-free'));
 app.use('/knockout', express.static(__dirname + '/node_modules/knockout/build/output'));
+app.use('/bootswatch', express.static(__dirname + '/node_modules/bootswatch/dist'));
+app.use('/nice-select2', express.static(__dirname + '/node_modules/nice-select2/dist'));
 
 // autorizar servidores de microservicios
 app.use(cors({

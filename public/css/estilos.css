@@ -23,7 +23,6 @@ font-family: titulo;
 
 
 .padre{
-	
 	width:100%;
 	background-image: url(/static/imagenes/huellitas.png);
 	background-repeat: repeat;
@@ -33,11 +32,7 @@ font-family: titulo;
 }
 
 .logo{
-
 	background-color: #DBD4D1; 
-	width="150px"; 
-	height="150px";
 	height: 200px;
 	width: 100%;
-
 }
