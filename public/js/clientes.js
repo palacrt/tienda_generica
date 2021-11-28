@@ -35,18 +35,18 @@ class ClientesViewModel {
       console.log(self.clienteCurrent());
       self.isModalVisible(true);
     }
-    
+
     self.getActual = function (i) {
-      
+
       console.log(i);
-      
+
       self.clienteCurrent(self.clientes()[i]);
       //console.log(self.clienteCurrent());
       self.isModalVisible(true);
     }
-    
+
     self.seleccionar = function () {
-      // Cargar estado inicial del servidor   
+      // Cargar estado inicial del servidor
       fetch("http://localhost:3000")
       .then(response => response.json())
       .then(data => {
@@ -66,14 +66,23 @@ class ClientesViewModel {
     }
 
     self.get_descripcion_municipio = function (observable) {
-      
+
       console.log(observable());
 
-      var dato = self.lov_municipios().find(item => item.r == observable());
-      
-      console.log(dato);
-      
-      return dato.d;
+      try {
+
+        var dato = self.lov_municipios().find(item => item.r == observable());
+
+        console.log('Municipio: ');
+        console.log(dato);
+
+        return dato.d;
+
+      } catch (e) {
+
+        return null;
+
+      }
     }
 
     self.insertar = () => {
@@ -81,8 +90,8 @@ class ClientesViewModel {
       console.log('insertar');
       var dato = ko.toJS(self.clienteCurrent());
 
-      // Cargar estado inicial del servidor   
-      fetch("http://localhost:3000",{ 
+      // Cargar estado inicial del servidor
+      fetch("http://localhost:3000",{
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -107,8 +116,8 @@ class ClientesViewModel {
 
       var dato = ko.toJS(self.clienteCurrent());
 
-      // Cargar estado inicial del servidor   
-      fetch("http://localhost:3000/" + dato.id,{ 
+      // Cargar estado inicial del servidor
+      fetch("http://localhost:3000/" + dato.id,{
         method: 'PUT', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -125,7 +134,7 @@ class ClientesViewModel {
       .then(data => {
         console.log(data);
         self.seleccionar();
-        self.isModalVisible(false);        
+        self.isModalVisible(false);
       })
     }
 
@@ -142,8 +151,8 @@ class ClientesViewModel {
       self.clienteCurrent(self.clientes()[i]);
       var dato = ko.toJS(self.clienteCurrent());
 
-      // Cargar estado inicial del servidor   
-      fetch("http://localhost:3000/" + dato.id,{ 
+      // Cargar estado inicial del servidor
+      fetch("http://localhost:3000/" + dato.id,{
         method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -162,7 +171,7 @@ class ClientesViewModel {
       })
     }
 
-    self.seleccionar_lov_municipios(); 
+    self.seleccionar_lov_municipios();
     self.seleccionar();
 
   }

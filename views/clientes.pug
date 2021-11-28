@@ -3,7 +3,7 @@ extends layout.pug
 block main
   main#principal.container(style="background-color:rgba(255,255,255,.75);")
     div#reporte(style="margin-top: 24px; margin-bottom: 24px;padding-top: 12px; padding-bottom: 24px;")
-      button#nuevo.btn.btn-primary(type="button",data-bind="click: crear",style="margin-bottom:12px;") 
+      button#nuevo.btn.btn-primary(type="button",data-bind="click: crear",style="margin-bottom:12px;")
         i.fas.fa-plus(title="Crear")
       table.table.table-hover(style="background:none;")
         thead
@@ -21,7 +21,7 @@ block main
               button.btn.btn-primary(type="button",data-bind="click: function () {$parent.getActual($index())}")
                 i.fas.fa-edit(title="Editar")
               button.btn.btn-danger(type="button",data-bind="click: function () { confirm('Desea Eliminar?') ? $parent.eliminar($index()): null; }")
-                i.fas.fa-trash-alt(title="Eliminar")                                
+                i.fas.fa-trash-alt(title="Eliminar")
             td(data-bind="text: cedula")
             td(data-bind="text: nombre")
             td(data-bind="text: email")
@@ -56,8 +56,7 @@ block main
                 label(for="ciudad") Ciudad
                 select.form-select.form-control#ciudad(type="text",name="ciudad",data-bind="options: $parent.lov_municipios, optionsText: 'd', optionsValue: 'r', value: municipio_id, optionsCaption: 'Seleccionar Ciudad...'")
             div.modal-footer
-              button.btn.btn-primary#crear(type="button",data-bs-dismiss="modal",data-bind="click: $parent.guardar") Guardar                                                        
+              button.btn.btn-primary#crear(type="button",data-bs-dismiss="modal",data-bind="click: $parent.guardar") Guardar
               button.btn.btn-light#cancelar(type="button",data-bs-dismiss="modal") Cancelar
 
   script(src="/static/js/clientes.js")
-
